@@ -1,18 +1,31 @@
-function encodeToBase64(str: string | undefined): string {
-  if (str === null || str === undefined) {
+import Logger from "@/utils/logger";
+
+const logger = new Logger('Utils');
+
+export const encodeToBase64 = (str: string): string => {
+  try {
+    return btoa(str);
+  } catch (e) {
+    logger.error("Failed to encode to Base64:", e);
     return "";
   }
+};
 
-  const uint8Array = new TextEncoder().encode(str);
-  let binary = "";
-  uint8Array.forEach((byte) => {
-    binary += String.fromCharCode(byte);
-  });
-  return btoa(binary);
-}
+export const decodeFromBase64 = (str: string): string => {
+  try {
+    return decodeURIComponent(
+      atob(str)
+        .split("")
+        .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+        .join("")
+    );
+  } catch (e) {
+    logger.error("Failed to decode from Base64:", e);
+    return "";
+  }
+};
 
-
-function randomString(length = 16) {
+export function randomString(length = 16) {
   const chars =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let result = "";
@@ -20,10 +33,4 @@ function randomString(length = 16) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
   return result;
-}
-
-
-export {
-  encodeToBase64,
-  randomString
 }

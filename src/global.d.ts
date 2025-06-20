@@ -1,19 +1,7 @@
-import { EasyStore } from "./types";
-import ZoomAPI from "./zoomAPI";
+import ZoomAPI from "@/core/ZoomAPI";
 
 declare global {
   interface Window {
-    [key: number]: Window;
-    WCSockets?: {
-      instance?: {
-        RWG?: {
-          socket?: WebSocket;
-        };
-      };
-    };
-    easyStore?: EasyStore
-    zoomAPI: ZoomAPI
+    zoomAPI: ZoomAPI;
   }
 }
-
-export {};
