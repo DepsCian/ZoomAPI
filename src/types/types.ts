@@ -15,9 +15,18 @@ interface EasyStore {
 }
 
 interface User {
+  userId: number;
   displayName: string;
-  userId: unknown;
-  [key: string]: any;
+  isGuest: boolean;
+  isMuted: boolean;
+  isVideoOn: boolean;
+  isHandRaised: boolean;
+}
+
+export interface ZoomSocketInstance {
+  RWG?: {
+    socket: WebSocket;
+  };
 }
 
 export type { EasyStore, EasyStoreData, MeetingInfo, User };

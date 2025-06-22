@@ -21,3 +21,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+/dist
+/build
+/node_modules
+/dist
+/build
+/node_modules

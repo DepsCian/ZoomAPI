@@ -1,0 +1,18 @@
+export const CONFIG = {
+  INIT_TIMEOUT: 30000,
+  INIT_INTERVAL: 500,
+  GET_USERS_MAX_DEPTH: 40,
+} as const; 
+
+export const WEBSOCKET_EVENTS = {
+  OUTGOING: {
+    SELF_RENAME: 4109,
+    REACTION: 4259,
+    HAND_STATE: 4131,
+    CHAT: 4135,
+  },
+  INCOMING: {
+    USER_LIST_UPDATE: 7937,
+    REACTION: 4260,
+  },
+} as const; 
